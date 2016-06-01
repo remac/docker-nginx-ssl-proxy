@@ -81,6 +81,8 @@ sed -i "s|{{TARGET_SERVICE}}|${TARGET_SERVICE}|" /etc/nginx/conf.d/proxy.conf
 # Tell nginx the name of the service
 sed -i "s/{{SERVER_NAME}}/${SERVER_NAME}/g;" /etc/nginx/conf.d/proxy.conf
 
+echo "Listing /etc/nginx/conf.d"
+ls -al /etc/nginx/conf.d
 
 echo "Starting nginx..."
 nginx -g 'daemon off;'
