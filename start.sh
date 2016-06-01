@@ -39,6 +39,21 @@ if [ -n "${SERVICE_PORT_ENV_NAME+1}" ]; then
   TARGET_SERVICE="$TARGET_SERVICE:${!SERVICE_PORT_ENV_NAME}"
 fi
 
+if [ -n "${PROV_SERVICE_HOST_ENV_NAME+1}" ]; then
+  PROV_SERVICE=${!PROV_SERVICE_HOST_ENV_NAME}
+fi
+
+if [ -n "${PROV_SERVER_NAME_ENV_NAME+1}" ]; then
+  PROV_SERVER_NAME=${!PROV_SERVER_NAME_ENV_NAME}
+  sed -i "s/{{PROV_SERVER_NAME}}/${PROV_SERVER_NAME}/g;"
+fi
+
+
+if [-n "${PROV_SERVICE+1}" ]; then
+  sed -i "s/{{PROV_SERVICE}}/${PROV_SERVICE}/g;" /etc/nginx/conf.d/prov.conf
+  sed -i "s/#provservice# //g" /etc/nginx/conf.d/prov.conf
+fi
+
 # If the CERT_SERVICE_HOST_ENV_NAME and CERT_SERVICE_PORT_ENV_NAME vars
 # are provided, they point to the env vars set by Kubernetes that contain the
 # actual target address and port of the encryption service. Override the

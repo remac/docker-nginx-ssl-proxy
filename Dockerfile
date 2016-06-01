@@ -27,6 +27,7 @@ ADD start.sh /usr/src/
 ADD nginx/nginx.conf /etc/nginx/
 ADD nginx/proxy*.conf /usr/src/
 ADD nginx/default*.conf /usr/src/
+ADD nginx/prov.conf /etc/nginx/
 
 RUN mkdir /etc/nginx/snippets/
 RUN mkdir -p /tmp/letsencrypt/.well-known/acme-challenge/
