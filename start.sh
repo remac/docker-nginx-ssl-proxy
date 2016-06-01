@@ -43,9 +43,8 @@ if [ -n "${PROV_SERVICE_HOST_ENV_NAME+1}" ]; then
   PROV_SERVICE=${!PROV_SERVICE_HOST_ENV_NAME}
 fi
 
-if [ -n "${PROV_SERVER_NAME_ENV_NAME+1}" ]; then
+if [ -n "${PROV_SERVER_NAME+1}" ]; then
   cp /usr/src/prov.conf /etc/nginx/conf.d/prov.conf
-  PROV_SERVER_NAME=${!PROV_SERVER_NAME_ENV_NAME}
   sed -i "s/{{PROV_SERVER_NAME}}/${PROV_SERVER_NAME}/g;" /etc/nginx/conf.d/prov.conf
 fi
 
